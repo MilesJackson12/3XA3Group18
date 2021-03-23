@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Explosion.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Explosion.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * Represents the explosion object in game.
+ */
+class Explosion {
+  /** 
+   * Constructor of Explosion object.
+ * @constructor
+ * @param {int} row - The row of the explosion.
+ * @param {int} col - The column of the explosion.
+ * @param {int} size - The size of the bomb being dropped.
+ */
+  constructor(row, col, size){
+    this.row = row;
+    this.col = col;
+    this.dir = size;
+    this.alive = true;
+    this.timer = 300;
+  }
+  /**
+   * Visually renders the explosion
+   */
+  render(){}
+  /**
+   * Blows up a bomb and it's surrounding tiles.
+   * @param {Bomb} bomb - bomb object 
+   */
+  blowUpBomb(bomb){}
+  /**
+   * Update the explosion each frame.
+   */
+  update(){}
+
+}
+
+
+// function Explosion(row, col, dir, center) {
+//     this.row = row;
+//     this.col = col;
+//     this.dir = dir;
+//     this.alive = true;
+  
+//     // show explosion for 0.3 seconds
+//     this.timer = 300;
+  
+//     // update the explosion each frame
+//     this.update = function(dt) {
+//       this.timer -= dt;
+  
+//       if (this.timer &lt;=0) {
+//         this.alive = false;
+//       }
+//     };
+  
+//     // render the explosion each frame
+//     this.render = function() {
+//       const x = this.col * grid;
+//       const y = this.row * grid;
+//       const horizontal = this.dir.col;
+//       const vertical = this.dir.row;
+  
+//       // create a fire effect by stacking red, orange, and yellow on top of
+//       // each other using progressively smaller rectangles
+//       context.fillStyle = '#D72B16';  // red
+//       context.fillRect(x, y, grid, grid);
+  
+//       context.fillStyle = '#F39642';  // orange
+  
+//       // determine how to draw based on if it's vertical or horizontal
+//       // center draws both ways
+//       if (center || horizontal) {
+//         context.fillRect(x, y + 6, grid, grid - 12);
+//       }
+//       if (center || vertical) {
+//         context.fillRect(x + 6, y, grid - 12, grid);
+//       }
+  
+//       context.fillStyle = '#FFE5A8';  // yellow
+  
+//       if (center || horizontal) {
+//         context.fillRect(x, y + 12, grid, grid - 24);
+//       }
+//       if (center || vertical) {
+//         context.fillRect(x + 12, y, grid - 24, grid);
+//       }
+//     };
+//   }
+
+
+
+  
+//   // blow up a bomb and its surrounding tiles
+// function blowUpBomb(bomb) {
+
+//     // bomb has already exploded so don't blow up again
+//     if (!bomb.alive) return;
+  
+//     bomb.alive = false;
+  
+//     // remove bomb from grid
+//     cells[bomb.row][bomb.col] = null;
+  
+//     // explode bomb outward by size
+//     const dirs = [{
+//       // up
+//       row: -1,
+//       col: 0
+//     }, {
+//       // down
+//       row: 1,
+//       col: 0
+//     }, {
+//       // left
+//       row: 0,
+//       col: -1
+//     }, {
+//       // right
+//       row: 0,
+//       col: 1
+//     }];
+//     dirs.forEach((dir) => {
+//       for (let i = 0; i &lt; bomb.size; i++) {
+//         const row = bomb.row + dir.row * i;
+//         const col = bomb.col + dir.col * i;
+//         const cell = cells[row][col];
+  
+//         // stop the explosion if it hit a wall
+//         if (cell === types.wall) {
+//           return;
+//         }
+  
+//         // center of the explosion is the first iteration of the loop
+//         entities.push(new Explosion(row, col, dir, i === 0 ? true : false));
+//         cells[row][col] = null;
+  
+//         // bomb hit another bomb so blow that one up too
+//         if (cell === types.bomb) {
+  
+//           // find the bomb that was hit by comparing positions
+//           const nextBomb = entities.find((entity) => {
+//             return (
+//               entity.type === types.bomb &amp;&amp;
+//               entity.row === row &amp;&amp; entity.col === col
+//             );
+//           });
+//           blowUpBomb(nextBomb);
+//         }
+  
+//         // stop the explosion if hit anything
+//         if (cell) {
+//           return;
+//         }
+//       }
+//     });
+//   }
+  </code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Client.html">Client</a></li><li><a href="module-Collisions.html">Collisions</a></li><li><a href="module-EndGame.html">EndGame</a></li><li><a href="module-GameLoop.html">GameLoop</a></li><li><a href="module-GenerateLevel.html">GenerateLevel</a></li><li><a href="module-Movement.html">Movement</a></li><li><a href="module-PlaceBomb.html">PlaceBomb</a></li><li><a href="module-Server.html">Server</a></li><li><a href="module-StartGame.html">StartGame</a></li></ul><h3>Classes</h3><ul><li><a href="Bomb.html">Bomb</a></li><li><a href="Explosion.html">Explosion</a></li><li><a href="Player.html">Player</a></li><li><a href="PowerUP.html">PowerUP</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri Mar 19 2021 09:42:01 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
